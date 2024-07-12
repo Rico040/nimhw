@@ -13,7 +13,7 @@ const
     Usage = """
 nimhw - H🌍 (HWorld) implementation written in Nim.
   (c) Copyright 2024 Rico040
-Usage: c2nim [options] inputfile
+Usage: nimhw [options] inputfile
   if no aren't specified it'll turn into REPL
 Options:
   --help -h                     prints this message
