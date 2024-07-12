@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.1.0"
+version       = "0.1.1"
 author        = "Rico040"
 description   = "H🌍 (HWorld) interpreter written in Nim."
 license       = "MIT"

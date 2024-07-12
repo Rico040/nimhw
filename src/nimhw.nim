@@ -7,11 +7,11 @@
 #    distribution, for details about the copyright.
 #
 import std/[os, parseopt], strutils
-import runner, compiler
+import runner, compiler, repl
 
 const
-  Usage = """
-nimhw - H🌍 (HWorld) interpreter and "compiler" written in Nim.
+    Usage = """
+nimhw - H🌍 (HWorld) implementation written in Nim.
   (c) Copyright 2024 Rico040
 Usage: c2nim [options] inputfile
   if no aren't specified it'll turn into REPL
@@ -25,13 +25,11 @@ proc writeHelp() =
     echo Usage
 
 var positionalArgs = newSeq[string]()
-var code: string
 var compileFlag = false
 
 var optparser = initOptParser(quoteShellCommand(commandLineParams()))
 if paramCount() == 0:
-    #TODO - Translate user to REPL
-    echo Usage
+    initRepl()
 for kind, key, val in optparser.getopt():
     case kind
     of cmdArgument:
@@ -46,7 +44,12 @@ for kind, key, val in optparser.getopt():
     of cmdEnd: assert(false) # cannot happen
 
 if compileFlag:
-    compile(positionalArgs[0])
+    #TODO - Should we pass every input files?
+    try:
+        compile(positionalArgs[0])
+    except IndexDefect:
+        echo "Error: no input file"
+
 if positionalArgs.len > 0 and not compileFlag:
     let contents = readFile(positionalArgs[0])
     let lines = contents.splitLines()
