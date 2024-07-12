@@ -18,7 +18,7 @@ Usage: nimhw [options] inputfile
 Options:
   --help -h                     prints this message
   --eval -e:code                evaluates code
-  -c                     compiles code
+  -c                            compiles code
 """
 
 proc writeHelp() =
