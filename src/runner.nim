@@ -1,4 +1,5 @@
 # Evaluate some H🌍 code
+# https://esolangs.org/wiki/H%F0%9F%8C%8D#Commands
 proc run*(code: string): string =
     case code:
         of "h": return "Hello!"
