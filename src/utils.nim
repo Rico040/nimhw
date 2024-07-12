@@ -4,8 +4,12 @@ proc escapeSpecialChars*(s: string): string =
     result = s.replace("\"", "\\\"")
 
 proc removeFileExtension*(filePath: string): string =
-    let (_, fileName, _) = splitFile(filePath)
-    return fileName
+    let (fileDir, fileName, _) = splitFile(filePath)
+    if fileDir != "":
+        return fileDir & "/" & fileName
+    else:
+        return fileName
+    
 
 proc extractVersion*(): string {.compileTime.} =
     let nimbleFile = staticRead("../nimhw.nimble")

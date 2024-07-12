@@ -18,6 +18,9 @@ proc compile*(filename: string) =
     fw.close()
     
     echo "Compiling..."
-    discard execShellCmd(fmt"nim c -d:release --verbosity:0 --opt:size .\{filename2}.nim")
+    var status = execShellCmd(fmt"nim c -d:release --verbosity:0 --opt:size .\{filename2}.nim")
+    if status != 0:
+        echo "Error: nim is not installed"
+        return
     removeFile(fmt"{filename2}.nim")
     echo "Done."
