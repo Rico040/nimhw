@@ -12,7 +12,7 @@ proc removeFileExtension*(filePath: string): string =
     
 
 proc extractVersion*(): string {.compileTime.} =
-    let nimbleFile = staticRead("../nimhw.nimble")
+    let nimbleFile = staticRead("../../nimhw.nimble")
     for line in splitLines(nimbleFile):
         if scanf(line, "version$s=$s\"$+\"", result): break
     assert '.' in result
