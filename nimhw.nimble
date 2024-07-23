@@ -11,3 +11,6 @@ bin           = @["nimhw"]
 # Dependencies
 
 requires "nim >= 2.0.8"
+
+task test, "Run all tests":
+    exec "testament --megatest:off all"

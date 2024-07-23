@@ -7,7 +7,7 @@
 #    distribution, for details about the copyright.
 #
 import std/[os, parseopt], strutils
-import runner, compiler, repl
+import nimhw/[runner, compiler, repl]
 
 const
     Usage = """
