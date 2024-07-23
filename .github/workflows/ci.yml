@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare environment
+        uses: jiro4989/setup-nim-action@v2
+        with:
+          nim-version: '2.0.x' # default is 'stable'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build package
+        run: nimble build -Y
+        
+      - name: Test package
+        run: nimble test -Y
