@@ -44,7 +44,6 @@ for kind, key, val in optparser.getopt():
     of cmdEnd: assert(false) # cannot happen
 
 if compileFlag:
-    #TODO - Should we pass every input files?
     try:
         compile(positionalArgs[0])
     except IndexDefect:
